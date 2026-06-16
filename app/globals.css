@@ -24,3 +24,62 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+  }
+
+  /* ====================== DARK MODE ====================== */
+  body {
+    background-color: #0a0a0a;
+    color: #e0e0e0;
+  }
+
+  /* ====================== LIGHT MODE ====================== */
+  .light-mode {
+    background: linear-gradient(135deg, #739df0, #e2a3eb);
+    color: #222;
+  }
+
+  .light-mode header {
+    background: linear-gradient(135deg, #739df0, #e2a3eb) !important;
+  }
+}
+
+@layer components {
+  .card {
+    background: #1f1f1f;
+    border-radius: 20px;
+    padding: 32px 28px;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .card:hover {
+    transform: translateY(-16px) scale(1.03);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+  }
+
+  .light-mode .card {
+    background: #ffffff;
+    color: #222;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .section-title {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+}
