@@ -1,47 +1,20 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Home() {
   const [isLightMode, setIsLightMode] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
   const [formSubmitted, setFormSubmitted] = useState(false);
-
-  useEffect(() => {
-    if (isLightMode) {
-      document.documentElement.classList.add('light-mode');
-    } else {
-      document.documentElement.classList.remove('light-mode');
-    }
-  }, [isLightMode]);
-
-  // Auto-hide success message after 6 seconds
-  useEffect(() => {
-    if (formSubmitted) {
-      const timer = setTimeout(() => {
-        setFormSubmitted(false);
-      }, 6000);
-      return () => clearTimeout(timer);
-    }
-  }, [formSubmitted]);
 
   const toggleTheme = () => {
     setIsLightMode(!isLightMode);
+    document.documentElement.classList.toggle('light-mode');
   };
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    setActiveSection(id);
     setIsMobileMenuOpen(false);
-  };
-
-  // Scroll to contact form
-  const scrollToContact = () => {
-    document.getElementById('contact-form')?.scrollIntoView({ 
-      behavior: 'smooth',
-      block: 'start'
-    });
   };
 
   return (
@@ -56,10 +29,11 @@ export default function Home() {
           </button>
 
           <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <button onClick={() => scrollToSection('home')} className={`hover:text-yellow-400 transition ${activeSection === 'home' ? 'text-yellow-400' : ''}`}>Home</button>
-            <button onClick={() => scrollToSection('about')} className={`hover:text-yellow-400 transition ${activeSection === 'about' ? 'text-yellow-400' : ''}`}>Über uns</button>
-            <button onClick={() => scrollToSection('matches')} className={`hover:text-yellow-400 transition ${activeSection === 'matches' ? 'text-yellow-400' : ''}`}>Matches</button>
-            <button onClick={() => scrollToSection('erfolge')} className={`hover:text-yellow-400 transition ${activeSection === 'erfolge' ? 'text-yellow-400' : ''}`}>Erfolge</button>
+            <button onClick={() => scrollToSection('home')} className="hover:text-yellow-400 transition">Home</button>
+            <button onClick={() => scrollToSection('about')} className="hover:text-yellow-400 transition">Über uns</button>
+            <a href="/members" className="hover:text-yellow-400 transition">Mitglieder</a>
+            <button onClick={() => scrollToSection('matches')} className="hover:text-yellow-400 transition">Matches</button>
+            <button onClick={() => scrollToSection('erfolge')} className="hover:text-yellow-400 transition">Erfolge</button>
           </div>
 
           <div className="flex items-center gap-4">
@@ -69,6 +43,19 @@ export default function Home() {
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden fixed inset-0 bg-black/95 z-40 pt-20">
+            <div className="flex flex-col items-center gap-10 text-2xl font-medium">
+              <button onClick={() => scrollToSection('home')}>Home</button>
+              <button onClick={() => scrollToSection('about')}>Über uns</button>
+              <a href="/members" className="hover:text-yellow-400">Mitglieder</a>
+              <button onClick={() => scrollToSection('matches')}>Matches</button>
+              <button onClick={() => scrollToSection('erfolge')}>Erfolge</button>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* HERO */}
@@ -79,12 +66,7 @@ export default function Home() {
           <p className="text-xl md:text-3xl max-w-md mx-auto opacity-90 mb-10">
             Der eSport Clan, der zusammen gewinnt.
           </p>
-          
-          {/* Button springt zum Kontaktformular */}
-          <button 
-            onClick={scrollToContact}
-            className="px-12 py-5 bg-white text-black rounded-full text-xl font-semibold hover:bg-yellow-300 hover:scale-105 transition-all shadow-lg"
-          >
+          <button onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })} className="px-12 py-5 bg-white text-black rounded-full text-xl font-semibold hover:bg-yellow-300 hover:scale-105 transition-all shadow-lg">
             Jetzt dem Clan beitreten
           </button>
         </div>
@@ -145,49 +127,56 @@ export default function Home() {
       </section>
 
       {/* KONTAKT FORMULAR */}
-      <section id="contact-form" className="py-20 bg-black/40">
-        <div className="max-w-2xl mx-auto px-6">
-          <h2 className="section-title">Jetzt beitreten</h2>
-          <p className="text-center text-gray-400 mb-12">Schick uns eine Nachricht – wir melden uns schnell!</p>
+<section id="contact-form" className="py-20 bg-black/40">
+  <div className="max-w-2xl mx-auto px-6">
+    <h2 className="section-title">Jetzt beitreten</h2>
+    <p className="text-center text-gray-400 mb-12">Schick uns eine Nachricht – wir melden uns schnell!</p>
 
-          {formSubmitted ? (
-            <div className="text-center py-16 animate-in fade-in duration-700">
-              <div className="text-7xl mb-6">🎉</div>
-              <h3 className="text-3xl font-bold mb-4">Vielen Dank!</h3>
-              <p className="text-xl text-green-400">Deine Anfrage wurde erfolgreich gesendet.</p>
-              <p className="mt-4 text-gray-400">Wir melden uns in den nächsten Tagen bei dir.</p>
-            </div>
-          ) : (
-            <form 
-              action="https://formspree.io/f/xvznlnge"
-              method="POST"
-              onSubmit={(e) => {
-              // Formspree braucht kein preventDefault
-                setTimeout(() => setFormSubmitted(true), 800);
-              }}
-              className="space-y-6"
-            >
-              <input type="text" name="name" placeholder="Dein Name" required className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-2xl focus:border-yellow-400 focus:outline-none text-white placeholder-gray-400" />
-              <input type="email" name="email" placeholder="Deine E-Mail" required className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-2xl focus:border-yellow-400 focus:outline-none text-white placeholder-gray-400" />
-              <textarea name="message" placeholder="Warum möchtest du bei BliZzen mitmachen?" rows={6} required className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-2xl focus:border-yellow-400 focus:outline-none text-white placeholder-gray-400"></textarea>
-              
-              <button type="submit" className="w-full py-6 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold rounded-2xl text-xl hover:scale-105 transition-all shadow-lg">
-                Anfrage senden
-              </button>
-            </form>
-            
-          )}
-        </div>
-      </section>
+    {formSubmitted ? (
+      <div className="text-center py-16 bg-green-900/30 border border-green-500 rounded-3xl">
+        <div className="text-7xl mb-6">🎉</div>
+        <h3 className="text-3xl font-bold mb-4">Vielen Dank!</h3>
+        <p className="text-xl text-green-400">Deine Anfrage wurde erfolgreich gesendet.</p>
+        <p className="mt-4 text-gray-400">Wir melden uns in den nächsten Tagen bei dir.</p>
+        <button 
+          onClick={() => setFormSubmitted(false)}
+          className="mt-8 px-8 py-3 border border-white/30 rounded-full hover:bg-white/10 transition"
+        >
+          Neue Nachricht senden
+        </button>
+      </div>
+    ) : (
+      <form 
+        action={process.env.NEXT_PUBLIC_FORMSPREE_URL} 
+        method="POST"
+        onSubmit={(e) => {
+          e.preventDefault();
+          const form = e.currentTarget;
+          form.submit();                    // Normales Absenden
+          setTimeout(() => setFormSubmitted(true), 700);
+        }}
+        className="space-y-6"
+      >
+        <input type="text" name="name" placeholder="Dein Name" required className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-2xl focus:border-yellow-400 focus:outline-none text-white placeholder-gray-400" />
+        <input type="email" name="email" placeholder="Deine E-Mail" required className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-2xl focus:border-yellow-400 focus:outline-none text-white placeholder-gray-400" />
+        <textarea name="message" placeholder="Warum möchtest du bei BliZzen mitmachen?" rows={6} required className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-2xl focus:border-yellow-400 focus:outline-none text-white placeholder-gray-400"></textarea>
+        
+        <button type="submit" className="w-full py-6 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold rounded-2xl text-xl hover:scale-105 transition-all shadow-lg">
+          Anfrage senden
+        </button>
+      </form>
+    )}
+  </div>
+</section>
 
       {/* FOOTER */}
       <footer className="bg-black py-12 border-t border-white/10">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <p className="text-sm opacity-70">&copy; 2026 BliZzen eSport Clan • Alle Rechte vorbehalten</p>
           <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm opacity-70">
-            <a href="/impressum" className="hover:text-white">Impressum</a>
-            <a href="/datenschutz" className="hover:text-white">Datenschutz</a>
-            <a href="/kontakt" className="hover:text-white">Kontakt</a>
+            <a href="/impressum" className="hover:text-white transition">Impressum</a>
+            <a href="/datenschutz" className="hover:text-white transition">Datenschutz</a>
+            <a href="/kontakt" className="hover:text-white transition">Kontakt</a>
           </div>
         </div>
       </footer>
