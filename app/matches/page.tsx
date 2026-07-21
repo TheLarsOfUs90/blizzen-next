@@ -94,6 +94,12 @@ export default function Matches() {
               Matches
             </button>
             <button
+              onClick={() => navigateTo('/events')}
+              className="hover:text-yellow-400 transition"
+            >
+              Events
+            </button>
+            <button
               onClick={() => navigateTo('/erfolge')}
               className="hover:text-yellow-400 transition"
             >
@@ -124,6 +130,7 @@ export default function Matches() {
               <button onClick={() => navigateTo('/#about')}>Über uns</button>
               <button onClick={() => navigateTo('/members')} className="text-yellow-400">Mitglieder</button>
               <button onClick={() => navigateTo('/matches')} className="text-yellow-400">Matches</button>
+              <button onClick={() => navigateTo('/events')} className="text-yellow-400">Events</button>
               <button onClick={() => navigateTo('/erfolge')} className="text-yellow-400">Erfolge</button>
             </div>
           </div>

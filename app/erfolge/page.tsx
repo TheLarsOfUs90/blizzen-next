@@ -48,6 +48,7 @@ export default function Erfolge() {
             </button>
             <a href="/members" className="hover:text-yellow-400 transition">Mitglieder</a>
             <a href="/matches" className="hover:text-yellow-400 transition">Matches</a>
+            <a href="/events" className="hover:text-yellow-400 transition">Events</a>
             <a href="/erfolge" className="text-yellow-400 font-semibold">Erfolge</a>
           </div>
 
@@ -67,6 +68,7 @@ export default function Erfolge() {
               <button onClick={() => navigateTo('/#about')}>Über uns</button>
               <a href="/members" className="hover:text-yellow-400">Mitglieder</a>
               <a href="/matches" className="hover:text-yellow-400">Matches</a>
+              <a href="/events" className="hover:text-yellow-400">Events</a>
               <a href="/erfolge" className="text-yellow-400">Erfolge</a>
             </div>
           </div>

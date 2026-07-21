@@ -33,6 +33,7 @@ export default function Home() {
             <button onClick={() => scrollToSection('about')} className="hover:text-yellow-400 transition">Über uns</button>
             <a href="/members" className="hover:text-yellow-400 transition">Mitglieder</a>
             <a href="/matches" className="hover:text-yellow-400 transition">Matches</a>
+            <a href="/events" className="hover:text-yellow-400 transition">Events</a>
             <a href="/erfolge" className="hover:text-yellow-400 transition">Erfolge</a>
           </div>
 

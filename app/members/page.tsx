@@ -39,6 +39,7 @@ export default function Members() {
       <button onClick={() => window.location.href = '/#about'} className="hover:text-yellow-400 transition">Über uns</button>
       <a href="/members" className="text-yellow-400 font-semibold">Mitglieder</a>
       <a href="/matches" className="hover:text-yellow-400 transition">Matches</a>
+      <a href="/events" className="hover:text-yellow-400 transition">Events</a>
       <button onClick={() => window.location.href = '/erfolge'} className="hover:text-yellow-400 transition">Erfolge</button>
     </div>
 
@@ -58,6 +59,7 @@ export default function Members() {
         <button onClick={() => window.location.href = '/#about'}>Über uns</button>
         <a href="/members" className="text-yellow-400">Mitglieder</a>
         <a href="/matches" className="hover:text-yellow-400">Matches</a>
+        <a href="/events" className="hover:text-yellow-400">Events</a>
         <button onClick={() => window.location.href = '/erfolge'}>Erfolge</button>
       </div>
     </div>
