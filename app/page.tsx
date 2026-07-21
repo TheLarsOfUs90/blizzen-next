@@ -83,49 +83,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* MATCHES */}
-      <section id="matches" className="py-20 bg-black/40">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="section-title">Nächste Matches</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="card text-center">
-              <p className="text-sm opacity-70">Samstag • 20:00 Uhr</p>
-              <p className="text-2xl font-bold mt-3">BliZzen vs Shadow Legion</p>
-              <p className="mt-6 text-yellow-400">Valorant • Ranked</p>
-            </div>
-            <div className="card text-center">
-              <p className="text-sm opacity-70">Sonntag • 18:00 Uhr</p>
-              <p className="text-2xl font-bold mt-3">BliZzen vs Neon Knights</p>
-              <p className="mt-6 text-yellow-400">League of Legends</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ERFOLGE */}
-      <section id="erfolge" className="success-section py-20 text-center">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="section-title">Unsere Erfolge</h2>
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-            <div className="card text-center">
-              <div className="text-7xl mb-6">🏆</div>
-              <p className="text-4xl font-bold">1. Platz</p>
-              <p className="opacity-75 mt-3">Regional Championship 2025</p>
-            </div>
-            <div className="card text-center">
-              <div className="text-7xl mb-6">🔥</div>
-              <p className="text-4xl font-bold">Top 8</p>
-              <p className="opacity-75 mt-3">National League</p>
-            </div>
-            <div className="card text-center">
-              <div className="text-7xl mb-6">👥</div>
-              <p className="text-4xl font-bold">150+</p>
-              <p className="opacity-75 mt-3">Aktive Mitglieder</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* KONTAKT FORMULAR */}
 <section id="contact-form" className="py-20 bg-black/40">
   <div className="max-w-2xl mx-auto px-6">
