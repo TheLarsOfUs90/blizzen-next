@@ -32,8 +32,8 @@ export default function Home() {
             <button onClick={() => scrollToSection('home')} className="hover:text-yellow-400 transition">Home</button>
             <button onClick={() => scrollToSection('about')} className="hover:text-yellow-400 transition">Über uns</button>
             <a href="/members" className="hover:text-yellow-400 transition">Mitglieder</a>
-            <button onClick={() => scrollToSection('matches')} className="hover:text-yellow-400 transition">Matches</button>
-            <button onClick={() => scrollToSection('erfolge')} className="hover:text-yellow-400 transition">Erfolge</button>
+            <a href="/matches" className="hover:text-yellow-400 transition">Matches</a>
+            <a href="/erfolge" className="hover:text-yellow-400 transition">Erfolge</a>
           </div>
 
           <div className="flex items-center gap-4">
@@ -51,8 +51,8 @@ export default function Home() {
               <button onClick={() => scrollToSection('home')}>Home</button>
               <button onClick={() => scrollToSection('about')}>Über uns</button>
               <a href="/members" className="hover:text-yellow-400">Mitglieder</a>
-              <button onClick={() => scrollToSection('matches')}>Matches</button>
-              <button onClick={() => scrollToSection('erfolge')}>Erfolge</button>
+              <a href="/matches" className="hover:text-yellow-400">Matches</a>
+              <a href="/erfolge" className="hover:text-yellow-400">Erfolge</a>
             </div>
           </div>
         )}

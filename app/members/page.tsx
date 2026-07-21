@@ -38,8 +38,8 @@ export default function Members() {
       <button onClick={() => window.location.href = '/#home'} className="hover:text-yellow-400 transition">Home</button>
       <button onClick={() => window.location.href = '/#about'} className="hover:text-yellow-400 transition">Über uns</button>
       <a href="/members" className="text-yellow-400 font-semibold">Mitglieder</a>
-      <button onClick={() => window.location.href = '/#matches'} className="hover:text-yellow-400 transition">Matches</button>
-      <button onClick={() => window.location.href = '/#erfolge'} className="hover:text-yellow-400 transition">Erfolge</button>
+      <a href="/matches" className="hover:text-yellow-400 transition">Matches</a>
+      <button onClick={() => window.location.href = '/erfolge'} className="hover:text-yellow-400 transition">Erfolge</button>
     </div>
 
     <div className="flex items-center gap-4">
@@ -57,8 +57,8 @@ export default function Members() {
         <button onClick={() => window.location.href = '/#home'}>Home</button>
         <button onClick={() => window.location.href = '/#about'}>Über uns</button>
         <a href="/members" className="text-yellow-400">Mitglieder</a>
-        <button onClick={() => window.location.href = '/#matches'}>Matches</button>
-        <button onClick={() => window.location.href = '/#erfolge'}>Erfolge</button>
+        <a href="/matches" className="hover:text-yellow-400">Matches</a>
+        <button onClick={() => window.location.href = '/erfolge'}>Erfolge</button>
       </div>
     </div>
   )}
